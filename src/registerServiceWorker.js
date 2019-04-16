@@ -11,6 +11,7 @@ register(`${process.env.BASE_URL}sw.js`, {
     )
   },
   registered() {
+    requestNotificationPermission()
     console.log('Service worker has been registered.')
   },
   cached() {
@@ -29,4 +30,15 @@ register(`${process.env.BASE_URL}sw.js`, {
     console.error('Error during service worker registration:', error)
   }
 })
+
+const requestNotificationPermission = async () => {
+  const permission = await window.Notification.requestPermission()
+  // value of permission can be 'granted', 'default', 'denied'
+  // granted: user has accepted the request
+  // default: user has dismissed the notification permission popup by clicking on x
+  // denied: user has denied the request.
+  if (permission !== 'granted') {
+    throw new Error('Permission not granted for Notification')
+  }
+}
 
