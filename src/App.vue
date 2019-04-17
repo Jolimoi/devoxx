@@ -1,27 +1,28 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-       <p v-for="info in infos" :key="info.uuid">
-     {{info.lastName}} {{info.firstName}}
-     <img :src="info.avatarURL" style="width:50%;height:50%;">
-   </p>
+    <Speaker v-for="speaker in speakers" :key="speaker.uuid" :speaker="speaker" />
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import Speaker from "@/components/Speaker"
 
 export default {
   name: "app",
+  components: {
+    Speaker
+  },
   data() {
     return {
-      infos: null
+      speakers: null
     };
   },
   mounted() {
     axios
       .get("https://cfp.devoxx.fr/api/conferences/DevoxxFR2019/speakers")
-      .then(response => (this.infos = response.data));
+      .then(response => (this.speakers = response.data));
   }
 };
 </script>
