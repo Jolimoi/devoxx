@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="speaker">
     <img :src="speaker.avatarURL" style="width:50%;height:50%;">
     <p>{{speaker.lastName}} {{speaker.firstName}}</p>
   </div>
