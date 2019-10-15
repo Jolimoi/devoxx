@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    {{info}}
+    {{infos}}
   </div>
 </template>
 
@@ -12,13 +12,13 @@ export default {
   name: "app",
   data() {
     return {
-      info: null
+      infos: null
     };
   },
   mounted() {
     axios
       .get("https://cfp.devoxx.fr/api/conferences/DevoxxFR2019/speakers")
-      .then(response => (this.info = response));
+      .then(response => (this.infos = response.data));
   }
 };
 </script>
