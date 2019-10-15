@@ -51,6 +51,7 @@ export default {
 <style scoped>
 #camera, #camera--view, #camera--sensor, #camera--output{
     position: fixed;
+    left: 0;
     height: 100%;
     width: 100%;
     object-fit: cover;
